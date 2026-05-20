@@ -1,0 +1,28 @@
+/* Janela Principal */
+window {
+    background-color: rgba(30, 30, 46, 0.6); /* Fundo escuro e translúcido 🌌 */
+    border-radius: 10px;
+    border: 2px solid #89b4fa;
+}
+
+/* Container das Miniaturas */
+flowbox {
+    margin: 5px;
+}
+
+/* Cada item (miniatura) */
+flowboxchild {
+    padding: 10px;
+    border-radius: 20px;
+    border: 5;
+}
+
+/* Quando passamos o mouse ou selecionamos */
+flowboxchild:selected {
+    background-color: rgba(137, 180, 250, 0.3);
+}
+
+/* Ajuste das imagens */
+image {
+    border-radius: 8px;
+}

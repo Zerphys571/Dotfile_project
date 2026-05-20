@@ -1,0 +1,137 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "margin-top": 4,
+    "margin-left": 15,
+    "margin-bottom": 0,
+    "margin-right": 15,
+    "height": 32, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)2, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "clock",
+        "mpris",
+        "custom/weather"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "network",
+        "power-profiles-daemon",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "battery#bat2",
+        "custom/power"
+    ],
+    "clock": {
+        "timezone": "America/Campo_Grande",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "hyprland/workspaces":{
+        "format": " {icon} ",
+        "format-icons":{
+            "1": "",
+            "active": "󰣇",
+            "default": ""
+        },
+        "persistent-workspaces":{
+            "*": "5"
+        }
+    },
+    "mpris": {
+        "player": "spotify",
+        "format": "     {title} - {artist} ",
+        "format-paused": "󰏤  {title} - {artist}",
+        "max-length": 30,
+        "ignored-players": ["google-chrome-stable", "chromium", "brave", "firefox"],
+        "on-click": "playerctl -p spotify play-pause",
+        "on-click-right": "playerctl -p spotify next",
+        "on-scroll-up": "playerctl -p spotify previous",
+        "on-scroll-down": "playerctl -p spotify next",
+        "tooltip-format": "{title} - {artist}\nAlbum: {album}"
+    },
+    "custom/weather": {
+        "format": {},
+        "tooltip": true,
+        "interval": 1800,
+        "return-type": " text",
+        "exec": "curl -s 'wttr.in/?format=1'",
+        "on-click": "xdg-open"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": " {icon} {percent}% ",
+        //"format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        "format-icons": ["󰛩 ", "󱩎 ", "󱩏 ", "󱩐 ", "󱩑 ", "󱩒 ", "󱩓 ", "󱩔 ", "󱩕 ", "󱩖 ", "󰛨 "]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": " {icon} {capacity}%",
+        "format-full": " {icon} {capacity}%",
+        "format-charging": "{capacity}% 󰃨",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        //"format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": ["󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 ", "󰁿 ", "󰂀 ", "󰂁 ", "󰂂 ", "󰁹 "]
+            //"full": ["󰁺 ", "󰁻 ", "󰁼 ", "󰁽 ", "󰁾 ", "󰁿 ", "󰂀 ", "󰂁 ", "󰂂 ", "󰁹 "],
+            //"charging": ["󰢜 ", "󰂆 ", "󰂇 ", "󰂈 ", "󰢝 ", "󰂉 ", "󰢞 ", "󰂊 ", "󰂋 ", "󰂄 "]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+      "format": "  {icon} ",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "    {essid}",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "format-linked": "{ifname} (No IP) 󰊗",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰅶 {icon} {format_source}",
+        "format-muted": "󰅶 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰂑",
+            "headset": "󰂑",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format" : " ⏻  ",
+		"tooltip": false,
+        "on-click": "wlogout"		
+    }
+}

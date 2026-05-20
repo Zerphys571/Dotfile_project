@@ -1,0 +1,12 @@
+window {
+    background-color: transparent;
+    font-family: "FiraCode";
+    font-weight: bold;
+    font-style: normal;
+    font-size: 80px;
+    color: {{foreground}};
+    text-shadow: 2px 2px 0px  {{background}},
+                -2px -2px 0px {{background}},
+                 2px -2px 0px {{background}},
+                -2px 2px 0px  {{background}};
+}
